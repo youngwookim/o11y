@@ -1,0 +1,124 @@
+---
+
+loki:
+  image:
+    # -- The Docker registry
+    registry: docker.io
+    # -- Docker image repository
+    repository: grafana/loki
+    # -- Overrides the image tag whose default is the chart's appVersion
+    tag: null
+    # -- Docker image pull policy
+    pullPolicy: IfNotPresent
+
+  config: |
+    auth_enabled: false
+
+    server:
+      http_listen_port: 3100
+      # 16MB
+      grpc_server_max_recv_msg_size: 16777216
+      grpc_server_max_send_msg_size: 16777216
+
+    memberlist:
+      join_members:
+        - {{ include "loki.fullname" . }}-memberlist
+
+    common:
+      path_prefix: /var/loki
+      replication_factor: 1
+      storage:
+        filesystem: null
+    #  azure:                                                        
+    #    # Name of container under the storage account
+    #    container_name: "loki"
+    #    # Name of storage account
+    #    account_name: "grandviewfs"
+    #    # Storage account key as an env from secret storage-account-key
+    #    account_key: "dk0Xjbnt1YinQj7FO0P+g1iTkh3Q9V/4bBg14wiK7u+KHt6bU0gS5IWC7UsHssq6u2GBseyQUVyEulfOYMUf6Q=="
+
+    limits_config:
+      enforce_metric_name: false
+      reject_old_samples: false
+      reject_old_samples_max_age: 240h
+      max_cache_freshness_per_query: 10m
+
+      retention_period: 120h
+      ingestion_rate_mb: 64
+      ingestion_burst_size_mb: 96
+      per_stream_rate_limit: 20MB
+      per_stream_rate_limit_burst: 40MB
+
+    schema_config:
+      configs:
+      - from: 2020-09-07
+        store: boltdb-shipper
+        object_store: azure
+        schema: v11
+        index:
+          prefix: loki_index_
+          period: 24h
+
+    storage_config:
+      azure:                                                        
+        # Name of container under the storage account
+        container_name: "loki"
+        # Name of storage account
+        account_name: "grandviewfs"
+        # Storage account key as an env from secret storage-account-key
+        account_key: "dk0Xjbnt1YinQj7FO0P+g1iTkh3Q9V/4bBg14wiK7u+KHt6bU0gS5IWC7UsHssq6u2GBseyQUVyEulfOYMUf6Q=="
+
+    table_manager:
+      retention_deletes_enabled: true
+      # 7 day
+      retention_period: 168h
+
+# ServiceMonitor configuration
+serviceMonitor:
+  # -- If enabled, ServiceMonitor resources for Prometheus Operator are created
+  enabled: true
+
+# Configuration for the write
+write:
+  # -- Number of replicas for the write
+  replicas: 2
+  persistence:
+    # -- Size of persistent disk
+    size: 10Gi
+    # -- Storage class to be used.
+    # If defined, storageClassName: <storageClass>.
+    # If set to "-", storageClassName: "", which disables dynamic provisioning.
+    # If empty or set to null, no storageClassName spec is
+    # set, choosing the default provisioner (gp2 on AWS, standard on GKE, AWS, and OpenStack).
+    storageClass: null
+
+# Configuration for the read node(s)
+read:
+  # -- Number of replicas for the read
+  replicas: 1
+  autoscaling:
+    # -- Enable autoscaling for the read, this is only used if `queryIndex.enabled: true`
+    enabled: true
+    # -- Minimum autoscaling replicas for the read
+    minReplicas: 1
+    # -- Maximum autoscaling replicas for the read
+    maxReplicas: 3
+    # -- Target CPU utilisation percentage for the read
+    targetCPUUtilizationPercentage: 60
+    # -- Target memory utilisation percentage for the read
+    targetMemoryUtilizationPercentage:
+  persistence:
+    # -- Size of persistent disk
+    size: 10Gi
+    # -- Storage class to be used.
+    # If defined, storageClassName: <storageClass>.
+    # If set to "-", storageClassName: "", which disables dynamic provisioning.
+    # If empty or set to null, no storageClassName spec is
+    # set, choosing the default provisioner (gp2 on AWS, standard on GKE, AWS, and OpenStack).
+    storageClass: null
+
+# Configuration for the gateway
+gateway:
+  # -- Specifies whether the gateway should be enabled
+  enabled: true
+ 

@@ -1,0 +1,122 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol-k8s-test
+  namespace: observability
+spec:
+  serviceAccount: otelcontribcol
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.50.0
+  imagePullPolicy: IfNotPresent
+  ports:
+    - port: 55678
+      name: opencensus
+    - port: 55679
+      name: zpages
+    - port: 4318
+      name: otlp-http
+    - port: 4317
+      name: otlp-grpc
+    - port: 9411
+      name: zipkin
+  env:
+  - name: K8S_CLUSTER_NAME
+    value: "grandview"
+  - name: K8S_CLUSTER_ENV
+    value: "dev"
+  - name: K8S_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi  
+  config: |
+    receivers:
+      otlp:
+        protocols:  
+          grpc:
+            endpoint: "0.0.0.0:4317"
+            max_recv_msg_size_mib: 99999999       
+          http:
+            endpoint: "0.0.0.0:4318"
+      opencensus:
+        endpoint: "0.0.0.0:55678"
+      zipkin:
+        endpoint: "0.0.0.0:9411"
+      jaeger:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:14250"
+
+    processors:
+      memory_limiter:
+        check_interval: 5s
+        limit_percentage: 80
+        spike_limit_percentage: 30
+      batch:
+        timeout: 2s
+        send_batch_size: 2048
+        send_batch_max_size: 2048
+      # attributes for Granview
+      resource:
+        attributes:
+        - key: k8s.cluster.name
+          value: "$K8S_CLUSTER_NAME"
+          action: upsert
+      #resourcedetection:
+      #  detectors: [env, system]
+      #  timeout: 2s
+
+    exporters:
+      logging:
+        loglevel: debug
+      #otlp:
+      #  #endpoint: otelcol-dso-collector.observability:4317
+      #  # ingress-nginx grpc
+      #  endpoint: otelcol-grpc.dev.metatron.app:443    
+      otlphttp:
+        #endpoint: http://otelcol-dso-collector.observability:4318
+        endpoint: https://otelcol.dev.metatron.app
+      # SigNoz (optional)
+      #otlp/signoz:
+      #  endpoint: "signoz-otel-collector.observability:4317"
+      #  tls:
+      #    insecure: true
+      #otlp/signozmetrics:
+      #  endpoint: "signoz-otel-collector-metrics.observability:4317"
+      #  tls:
+      #    insecure: true
+
+    extensions:
+      health_check:
+      pprof:
+      zpages:
+        endpoint: 0.0.0.0:55679
+      memory_ballast:
+        
+    service:
+      telemetry:
+        logs:
+          level: "debug"
+      extensions: [health_check, pprof, zpages, memory_ballast]
+      pipelines:
+        traces:
+          receivers: [otlp, zipkin]
+          processors: []
+          exporters: [logging]
+        #metrics:
+        #  receivers: [otlp, opencensus, prometheus]
+        #  processors: [memory_limiter, batch, resource]
+        #  exporters: [logging, otlphttp]
+        #logs:
+        #  receivers: [otlp, k8s_events]
+        #  processors: [memory_limiter, batch, resource]
+        #  exporters: [logging, otlphttp]
+        #logs/k8sevents:
+        #  receivers: [k8s_events]
+        #  processors: [memory_limiter, batch, resource]
+        #  exporters: [logging, otlphttp]

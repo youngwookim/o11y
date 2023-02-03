@@ -1,0 +1,246 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol-k8s
+  namespace: observability
+spec:
+  serviceAccount: otelcontribcol
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
+  imagePullPolicy: IfNotPresent
+  ports:
+    - port: 55678
+      name: opencensus
+    - port: 55679
+      name: zpages
+    - port: 4318
+      name: otlp-http
+    - port: 4317
+      name: otlp-grpc
+    - port: 9411
+      name: zipkin
+    - port: 8888
+      name: metrics
+  env:
+  - name: K8S_CLUSTER_NAME
+    value: "grandview"
+  - name: K8S_CLUSTER_ENV
+    value: "dev"
+  - name: K8S_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: K8S_POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: K8S_POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  - name: K8S_POD_IP
+    valueFrom:
+      fieldRef:
+        fieldPath: status.podIP
+  resources:
+    limits:
+      cpu: 1
+      memory: 9Gi
+    requests:
+      cpu: 1
+      memory: 3Gi  
+  config: |
+    receivers:
+      otlp:
+        protocols:  
+          grpc:
+            endpoint: "0.0.0.0:4317"
+            max_recv_msg_size_mib: 99999999       
+          http:
+            endpoint: "0.0.0.0:4318"
+      opencensus:
+        endpoint: "0.0.0.0:55678"
+      zipkin:
+        endpoint: "0.0.0.0:9411"
+      jaeger:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:14250"
+      # source: metrics
+      #k8s_cluster:
+      #  auth_type: serviceAccount
+      #  collection_interval: 60s
+      # source: logs
+      k8s_events:
+        auth_type: serviceAccount
+        #namespaces: [kafka, druid, grandview-dev, grandview-demo]
+      # source: metrics
+      prometheus:
+        config:
+          global:
+            scrape_interval: 1m
+            scrape_timeout: 20s
+            evaluation_interval: 1m
+          scrape_configs:
+            - job_name: 'otelcol-metrics-k8s-$K8S_CLUSTER_ENV'
+              scrape_interval: 30s
+              static_configs:
+                - targets: ['0.0.0.0:8888']
+            # https://github.com/prometheus/prometheus/blob/main/documentation/examples/prometheus-kubernetes.yml
+            - job_name: 'kubernetes-pods-$K8S_CLUSTER_ENV'
+              kubernetes_sd_configs:
+              - role: pod
+              relabel_configs:
+              # scrape pods annotated with "prometheus.io/scrape: true"
+              - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+                regex: "true"
+                action: keep
+              # read the port from "prometheus.io/port: <port>" annotation and update scraping address accordingly
+              - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+                action: replace
+                target_label: __address__
+                regex: ([^:]+)(?::\d+)?;(\d+)
+                # escaped $1:$2
+                replacement: $$1:$$2
+              - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+                action: replace
+                target_label: __metrics_path__
+                regex: (.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: namespace
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_pod_name]
+                action: replace
+                target_label: kubernetes_pod_name
+              - action: labelmap
+                regex: __meta_kubernetes_pod_label_(.+)
+            - job_name: "kubernetes-service-endpoints-$K8S_CLUSTER_ENV"
+              kubernetes_sd_configs:
+              - role: endpoints
+              relabel_configs:
+              # scrape pods annotated with "prometheus.io/scrape: true"
+              - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+                regex: "true"
+                action: keep
+              # read the port from "prometheus.io/port: <port>" annotation and update scraping address accordingly
+              - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+                action: replace
+                target_label: __address__
+                regex: ([^:]+)(?::\d+)?;(\d+)
+                # escaped $1:$2
+                replacement: $$1:$$2
+              - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+                action: replace
+                target_label: __metrics_path__
+                regex: (.+)
+              - action: labelmap
+                regex: __meta_kubernetes_service_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: namespace
+              - source_labels: [__meta_kubernetes_service_name]
+                action: replace
+                target_label: service
+            - job_name: 'kubernetes-cadvisor-$K8S_CLUSTER_ENV'
+              scheme: https
+              tls_config:
+                ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+              kubernetes_sd_configs:
+              - role: node
+              relabel_configs:
+              - action: labelmap
+                regex: __meta_kubernetes_node_label_(.+)
+              - target_label: __address__
+                replacement: kubernetes.default.svc:443
+              - source_labels: [__meta_kubernetes_node_name]
+                regex: (.+)
+                target_label: __metrics_path__
+                replacement: /api/v1/nodes/$${1}/proxy/metrics/cadvisor
+
+      #hostmetrics:
+      #  collection_interval: 60s
+      #  scrapers:
+      #    cpu:
+      #    load:
+      #    memory:
+      #    disk:
+      #    filesystem:
+      #    network:
+      #    #paging:
+      #    #processes:
+      #    #process:
+      #kubeletstats:
+      #  collection_interval: 60s
+      #  auth_type: "serviceAccount"
+      #  endpoint: "${K8S_NODE_NAME}:10250"
+      #  insecure_skip_verify: true
+      #  metric_groups: [container, pod, node, volume]
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 70
+        spike_limit_percentage: 30
+      batch:
+        timeout: 1s
+        send_batch_size: 2048
+        send_batch_max_size: 2048
+      # attributes for Granview
+      resource:
+        attributes:
+        - key: k8s.cluster.name
+          value: "$K8S_CLUSTER_NAME"
+          action: upsert
+      #resourcedetection:
+      #  detectors: [env, system]
+      #  timeout: 2s
+      #filter/exclude_metrics:
+      #  metrics:
+      #      exclude:
+      #          match_type: regexp
+      #          metric_names:
+      #              - go_.*
+      #          regexp:
+      #              cacheenabled: true
+      #              cachemaxnumentries: 1000
+
+    exporters:
+      logging:
+        #loglevel: debug
+      #otlp:
+      #  #endpoint: otelcol-dso-collector.observability:4317
+      #  # ingress-nginx grpc
+      #  endpoint: otelcol-grpc.dev.metatron.app:443    
+      otlphttp:
+        #endpoint: http://otelcol-dso-collector.observability:4318
+        endpoint: https://otelcol.dev.metatron.app
+
+    extensions:
+      health_check:
+      pprof:
+      zpages:
+        endpoint: 0.0.0.0:55679
+      memory_ballast:
+        size_in_percentage: 20
+        
+    service:
+      telemetry:
+        #logs:
+        #  level: "debug"
+      extensions: [health_check, pprof, zpages, memory_ballast]
+      pipelines:
+        traces:
+          receivers: [otlp, zipkin]
+          processors: [memory_limiter, batch, resource]
+          exporters: [logging, otlphttp]
+        metrics:
+          receivers: [otlp, opencensus, prometheus]
+          processors: [memory_limiter, batch, resource]
+          exporters: [logging, otlphttp]
+        logs/k8sevents:
+          receivers: [k8s_events]
+          processors: [memory_limiter, batch, resource]
+          exporters: [logging, otlphttp]

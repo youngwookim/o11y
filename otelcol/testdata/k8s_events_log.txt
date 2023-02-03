@@ -1,0 +1,34 @@
+Resource SchemaURL: 
+Resource labels:
+     -> k8s.cluster.name: STRING()
+     -> k8s.node.name: STRING(aks-defaultpool-10465047-vmss000002)
+     -> k8s.object.kind: STRING(Pod)
+     -> k8s.object.name: STRING(scan-configauditreport-5fc56578f--1-8ftsk)
+     -> k8s.object.uid: STRING(b22d7341-ef34-4ad4-99ce-78de0b28d594)
+     -> k8s.object.fieldpath: STRING()
+InstrumentationLibraryLogs #0
+InstrumentationLibraryLogs SchemaURL: 
+InstrumentationLibrary  
+LogRecord #0
+Timestamp: 2022-02-28 10:06:07 +0000 UTC
+Severity: Warning
+ShortName: 
+Body: MountVolume.SetUp failed for volume "config" : object "starboard-system"/"starboard-polaris-config" not registered
+Attributes:
+     -> k8s.event.reason: STRING(FailedMount)
+     -> k8s.event.action: STRING()
+     -> k8s.event.start_time: STRING(2022-02-28 10:06:07 +0000 UTC)
+     -> k8s.event.name: STRING(scan-configauditreport-5fc56578f--1-8ftsk.16d7eb2d25686191)
+     -> k8s.event.uid: STRING(49814098-6d31-4995-9730-4810d00f55ba)
+     -> k8s.namespace.name: STRING(starboard-system)
+     -> k8s.event.count: INT(1)
+Trace ID: 
+Span ID: 
+Flags: 0
+
+----
+jsonpath:
+
+$.resourceLogs[0].instrumentationLibraryLogs[0].logRecords[0].severityText --> Warning
+
+$.resourceLogs[0].instrumentationLibraryLogs[0].logRecords[0].body.stringValue

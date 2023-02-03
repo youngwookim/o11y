@@ -1,0 +1,15 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol-k8s
+  namespace: observability
+spec:
+  env:
+  - name: K8S_CLUSTER_NAME
+    value: "grandview-prd"
+  - name: K8S_CLUSTER_ENV
+    value: "prd"
+  - name: K8S_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName

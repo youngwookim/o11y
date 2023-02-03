@@ -1,0 +1,34 @@
+Resource labels:
+     -> k8s.pod.uid: STRING(84b19962-45e4-4778-8541-1b9624e0586d)
+     -> k8s.pod.name: STRING(druid-grandview-historicals-0)
+     -> k8s.pod.start_time: STRING(2022-03-14 07:25:33 +0000 UTC)
+     -> k8s.deployment.name: STRING(druid-grandview)
+     -> k8s.pod.labels.statefulset.kubernetes.io/pod-name: STRING(druid-grandview-historicals-0)
+     -> k8s.pod.labels.environment: STRING(azure)
+     -> k8s.pod.annotations.cloud: STRING(azure)
+     -> k8s.node.name: STRING(aks-defaultpool-10465047-vmss000000)
+     -> k8s.pod.labels.app: STRING(druid)
+     -> k8s.pod.labels.druid_cr: STRING(grandview)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIPs: STRING(10.244.3.179/32)
+     -> k8s.pod.labels.component: STRING(historical)
+     -> k8s.pod.labels.controller-revision-hash: STRING(druid-grandview-historicals-df4d4574d)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIP: STRING(10.244.3.179/32)
+     -> k8s.namespace.name: STRING(grandview-dev)
+     -> k8s.pod.labels.nodeSpecUniqueStr: STRING(druid-grandview-historicals)
+     -> k8s.pod.labels.release: STRING(alpha)
+     -> k8s.pod.annotations.cni.projectcalico.org/containerID: STRING(4dc72bb23cc56138a957e5ffd60342b80d9294f29ae0ae9d7c1946a8490e43d9)
+InstrumentationLibraryLogs #0
+InstrumentationLibraryLogs SchemaURL: 
+InstrumentationLibrary  
+LogRecord #0
+Timestamp: 2022-03-16 18:16:39.778134265 +0000 UTC
+Severity: 
+ShortName: 
+Body: 	at io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:351) ~[druid-server-2021.3-SNAPSHOT.jar:2021.3-SNAPSHOT]
+Attributes:
+     -> stream: STRING(stdout)
+     -> k8s.container.name: STRING(druid-grandview-historicals)
+     -> k8s.container.restart_count: STRING(0)
+     -> k8s.namespace.name: STRING(grandview-dev)
+     -> k8s.pod.name: STRING(druid-grandview-historicals-0)
+     -> k8s.pod.uid: STRING(84b19962-45e4-4778-8541-1b9624e0586d)

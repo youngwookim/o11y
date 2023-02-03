@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: grafana
+  namespace: observability
+spec:
+  rules:
+    - host: grafana.dev.metatron.app
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/"
+            backend:
+              service:
+                name: grafana
+                port:
+                  number: 80
+  # This section is only required if TLS is to be enabled for the Ingress
+  tls:
+    - hosts:
+        - grafana.dev.metatron.app
+      secretName: grandview-dev-tls

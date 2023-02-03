@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+#bases:
+#  - ../../base
+
+namespace: observability
+
+resources:
+  - otelcol-dso-intake.yaml 
+  #- otelcol-dso.yaml
+  #- otelcol-dso-ingester.yaml
+  #- otelcol-dso-otlphttp-ingress.yaml
+  #- otelcol-dso-otlpgrpc-ingress.yaml
+  - otelcol-dso-otlphttp-intake-ingress.yaml
+  #- otelcol-dso-hpa.yaml
+

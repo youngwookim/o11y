@@ -1,0 +1,854 @@
+{
+  "resourceLogs": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "k8s.cluster.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "k8s.node.name",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "k8s.object.kind",
+            "value": {
+              "stringValue": "Job"
+            }
+          },
+          {
+            "key": "k8s.object.name",
+            "value": {
+              "stringValue": "scan-configauditreport-77c54c4f84"
+            }
+          },
+          {
+            "key": "k8s.object.uid",
+            "value": {
+              "stringValue": "ac42acf1-e5f5-459f-84e0-6f9b5d68ae16"
+            }
+          },
+          {
+            "key": "k8s.object.fieldpath",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "otel.collector.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "host.name",
+            "value": {
+              "stringValue": "otelcol-k8s-collector-84d9c8f9dd-dlbzt"
+            }
+          },
+          {
+            "key": "os.type",
+            "value": {
+              "stringValue": "linux"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "azure"
+            }
+          },
+          {
+            "key": "cloud.platform",
+            "value": {
+              "stringValue": "azure_vm"
+            }
+          },
+          {
+            "key": "cloud.region",
+            "value": {
+              "stringValue": "KoreaCentral"
+            }
+          },
+          {
+            "key": "host.id",
+            "value": {
+              "stringValue": "af54196e-8539-45ef-979d-b8839304999c"
+            }
+          },
+          {
+            "key": "cloud.account.id",
+            "value": {
+              "stringValue": "49ec1bcb-2797-4ba8-8339-a30b8f862992"
+            }
+          },
+          {
+            "key": "azure.vm.size",
+            "value": {
+              "stringValue": "Standard_D8s_v4"
+            }
+          },
+          {
+            "key": "azure.vm.scaleset.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss"
+            }
+          },
+          {
+            "key": "azure.resourcegroup.name",
+            "value": {
+              "stringValue": "MC_GrandView-SKT_grandview-dev_koreacentral"
+            }
+          }
+        ]
+      },
+      "instrumentationLibraryLogs": [
+        {
+          "instrumentationLibrary": {},
+          "logRecords": [
+            {
+              "timeUnixNano": "1646633902000000000",
+              "severityNumber": "SEVERITY_NUMBER_INFO",
+              "severityText": "Normal",
+              "body": {
+                "stringValue": "Job completed"
+              },
+              "attributes": [
+                {
+                  "key": "k8s.event.reason",
+                  "value": {
+                    "stringValue": "Completed"
+                  }
+                },
+                {
+                  "key": "k8s.event.action",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "k8s.event.start_time",
+                  "value": {
+                    "stringValue": "2022-03-07 06:18:22 +0000 UTC"
+                  }
+                },
+                {
+                  "key": "k8s.event.name",
+                  "value": {
+                    "stringValue": "scan-configauditreport-77c54c4f84.16da04cf73645065"
+                  }
+                },
+                {
+                  "key": "k8s.event.uid",
+                  "value": {
+                    "stringValue": "48d06455-81e1-4e7a-9828-eb8610d770a1"
+                  }
+                },
+                {
+                  "key": "k8s.namespace.name",
+                  "value": {
+                    "stringValue": "starboard-system"
+                  }
+                },
+                {
+                  "key": "k8s.event.count",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
+              "traceId": "",
+              "spanId": ""
+            }
+          ]
+        }
+      ],
+      "schemaUrl": "https://opentelemetry.io/schemas/v1.6.1"
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "k8s.cluster.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "k8s.node.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss000001"
+            }
+          },
+          {
+            "key": "k8s.object.kind",
+            "value": {
+              "stringValue": "Pod"
+            }
+          },
+          {
+            "key": "k8s.object.name",
+            "value": {
+              "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6"
+            }
+          },
+          {
+            "key": "k8s.object.uid",
+            "value": {
+              "stringValue": "23fb5c1a-ddec-4fbd-a8c5-5b3fcee29069"
+            }
+          },
+          {
+            "key": "k8s.object.fieldpath",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "otel.collector.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "host.name",
+            "value": {
+              "stringValue": "otelcol-k8s-collector-84d9c8f9dd-dlbzt"
+            }
+          },
+          {
+            "key": "os.type",
+            "value": {
+              "stringValue": "linux"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "azure"
+            }
+          },
+          {
+            "key": "cloud.platform",
+            "value": {
+              "stringValue": "azure_vm"
+            }
+          },
+          {
+            "key": "cloud.region",
+            "value": {
+              "stringValue": "KoreaCentral"
+            }
+          },
+          {
+            "key": "host.id",
+            "value": {
+              "stringValue": "af54196e-8539-45ef-979d-b8839304999c"
+            }
+          },
+          {
+            "key": "cloud.account.id",
+            "value": {
+              "stringValue": "49ec1bcb-2797-4ba8-8339-a30b8f862992"
+            }
+          },
+          {
+            "key": "azure.vm.size",
+            "value": {
+              "stringValue": "Standard_D8s_v4"
+            }
+          },
+          {
+            "key": "azure.vm.scaleset.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss"
+            }
+          },
+          {
+            "key": "azure.resourcegroup.name",
+            "value": {
+              "stringValue": "MC_GrandView-SKT_grandview-dev_koreacentral"
+            }
+          }
+        ]
+      },
+      "instrumentationLibraryLogs": [
+        {
+          "instrumentationLibrary": {},
+          "logRecords": [
+            {
+              "timeUnixNano": "1646633902000000000",
+              "severityNumber": "SEVERITY_NUMBER_WARN",
+              "severityText": "Warning",
+              "body": {
+                "stringValue": "MountVolume.SetUp failed for volume \"config\" : object \"starboard-system\"/\"starboard-polaris-config\" not registered"
+              },
+              "attributes": [
+                {
+                  "key": "k8s.event.reason",
+                  "value": {
+                    "stringValue": "FailedMount"
+                  }
+                },
+                {
+                  "key": "k8s.event.action",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "k8s.event.start_time",
+                  "value": {
+                    "stringValue": "2022-03-07 06:18:22 +0000 UTC"
+                  }
+                },
+                {
+                  "key": "k8s.event.name",
+                  "value": {
+                    "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6.16da04cf76f6cf6e"
+                  }
+                },
+                {
+                  "key": "k8s.event.uid",
+                  "value": {
+                    "stringValue": "2374205c-cb79-467f-8fe4-5592a835edc4"
+                  }
+                },
+                {
+                  "key": "k8s.namespace.name",
+                  "value": {
+                    "stringValue": "starboard-system"
+                  }
+                },
+                {
+                  "key": "k8s.event.count",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
+              "traceId": "",
+              "spanId": ""
+            }
+          ]
+        }
+      ],
+      "schemaUrl": "https://opentelemetry.io/schemas/v1.6.1"
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "k8s.cluster.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "k8s.node.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss000001"
+            }
+          },
+          {
+            "key": "k8s.object.kind",
+            "value": {
+              "stringValue": "Pod"
+            }
+          },
+          {
+            "key": "k8s.object.name",
+            "value": {
+              "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6"
+            }
+          },
+          {
+            "key": "k8s.object.uid",
+            "value": {
+              "stringValue": "23fb5c1a-ddec-4fbd-a8c5-5b3fcee29069"
+            }
+          },
+          {
+            "key": "k8s.object.fieldpath",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "otel.collector.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "host.name",
+            "value": {
+              "stringValue": "otelcol-k8s-collector-84d9c8f9dd-dlbzt"
+            }
+          },
+          {
+            "key": "os.type",
+            "value": {
+              "stringValue": "linux"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "azure"
+            }
+          },
+          {
+            "key": "cloud.platform",
+            "value": {
+              "stringValue": "azure_vm"
+            }
+          },
+          {
+            "key": "cloud.region",
+            "value": {
+              "stringValue": "KoreaCentral"
+            }
+          },
+          {
+            "key": "host.id",
+            "value": {
+              "stringValue": "af54196e-8539-45ef-979d-b8839304999c"
+            }
+          },
+          {
+            "key": "cloud.account.id",
+            "value": {
+              "stringValue": "49ec1bcb-2797-4ba8-8339-a30b8f862992"
+            }
+          },
+          {
+            "key": "azure.vm.size",
+            "value": {
+              "stringValue": "Standard_D8s_v4"
+            }
+          },
+          {
+            "key": "azure.vm.scaleset.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss"
+            }
+          },
+          {
+            "key": "azure.resourcegroup.name",
+            "value": {
+              "stringValue": "MC_GrandView-SKT_grandview-dev_koreacentral"
+            }
+          }
+        ]
+      },
+      "instrumentationLibraryLogs": [
+        {
+          "instrumentationLibrary": {},
+          "logRecords": [
+            {
+              "timeUnixNano": "1646633902000000000",
+              "severityNumber": "SEVERITY_NUMBER_WARN",
+              "severityText": "Warning",
+              "body": {
+                "stringValue": "MountVolume.SetUp failed for volume \"kube-api-access-crf6k\" : object \"starboard-system\"/\"kube-root-ca.crt\" not registered"
+              },
+              "attributes": [
+                {
+                  "key": "k8s.event.reason",
+                  "value": {
+                    "stringValue": "FailedMount"
+                  }
+                },
+                {
+                  "key": "k8s.event.action",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "k8s.event.start_time",
+                  "value": {
+                    "stringValue": "2022-03-07 06:18:22 +0000 UTC"
+                  }
+                },
+                {
+                  "key": "k8s.event.name",
+                  "value": {
+                    "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6.16da04cf76f7d013"
+                  }
+                },
+                {
+                  "key": "k8s.event.uid",
+                  "value": {
+                    "stringValue": "da72d8da-ae43-4df2-9017-ef93288a3c06"
+                  }
+                },
+                {
+                  "key": "k8s.namespace.name",
+                  "value": {
+                    "stringValue": "starboard-system"
+                  }
+                },
+                {
+                  "key": "k8s.event.count",
+                  "value": {
+                    "intValue": "1"
+                  }
+                }
+              ],
+              "traceId": "",
+              "spanId": ""
+            }
+          ]
+        }
+      ],
+      "schemaUrl": "https://opentelemetry.io/schemas/v1.6.1"
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "k8s.cluster.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "k8s.node.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss000001"
+            }
+          },
+          {
+            "key": "k8s.object.kind",
+            "value": {
+              "stringValue": "Pod"
+            }
+          },
+          {
+            "key": "k8s.object.name",
+            "value": {
+              "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6"
+            }
+          },
+          {
+            "key": "k8s.object.uid",
+            "value": {
+              "stringValue": "23fb5c1a-ddec-4fbd-a8c5-5b3fcee29069"
+            }
+          },
+          {
+            "key": "k8s.object.fieldpath",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "otel.collector.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "host.name",
+            "value": {
+              "stringValue": "otelcol-k8s-collector-84d9c8f9dd-dlbzt"
+            }
+          },
+          {
+            "key": "os.type",
+            "value": {
+              "stringValue": "linux"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "azure"
+            }
+          },
+          {
+            "key": "cloud.platform",
+            "value": {
+              "stringValue": "azure_vm"
+            }
+          },
+          {
+            "key": "cloud.region",
+            "value": {
+              "stringValue": "KoreaCentral"
+            }
+          },
+          {
+            "key": "host.id",
+            "value": {
+              "stringValue": "af54196e-8539-45ef-979d-b8839304999c"
+            }
+          },
+          {
+            "key": "cloud.account.id",
+            "value": {
+              "stringValue": "49ec1bcb-2797-4ba8-8339-a30b8f862992"
+            }
+          },
+          {
+            "key": "azure.vm.size",
+            "value": {
+              "stringValue": "Standard_D8s_v4"
+            }
+          },
+          {
+            "key": "azure.vm.scaleset.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss"
+            }
+          },
+          {
+            "key": "azure.resourcegroup.name",
+            "value": {
+              "stringValue": "MC_GrandView-SKT_grandview-dev_koreacentral"
+            }
+          }
+        ]
+      },
+      "instrumentationLibraryLogs": [
+        {
+          "instrumentationLibrary": {},
+          "logRecords": [
+            {
+              "timeUnixNano": "1646633903000000000",
+              "severityNumber": "SEVERITY_NUMBER_WARN",
+              "severityText": "Warning",
+              "body": {
+                "stringValue": "MountVolume.SetUp failed for volume \"config\" : object \"starboard-system\"/\"starboard-polaris-config\" not registered"
+              },
+              "attributes": [
+                {
+                  "key": "k8s.event.reason",
+                  "value": {
+                    "stringValue": "FailedMount"
+                  }
+                },
+                {
+                  "key": "k8s.event.action",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "k8s.event.start_time",
+                  "value": {
+                    "stringValue": "2022-03-07 06:18:22 +0000 UTC"
+                  }
+                },
+                {
+                  "key": "k8s.event.name",
+                  "value": {
+                    "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6.16da04cf76f6cf6e"
+                  }
+                },
+                {
+                  "key": "k8s.event.uid",
+                  "value": {
+                    "stringValue": "2374205c-cb79-467f-8fe4-5592a835edc4"
+                  }
+                },
+                {
+                  "key": "k8s.namespace.name",
+                  "value": {
+                    "stringValue": "starboard-system"
+                  }
+                },
+                {
+                  "key": "k8s.event.count",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "traceId": "",
+              "spanId": ""
+            }
+          ]
+        }
+      ],
+      "schemaUrl": "https://opentelemetry.io/schemas/v1.6.1"
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "k8s.cluster.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "k8s.node.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss000001"
+            }
+          },
+          {
+            "key": "k8s.object.kind",
+            "value": {
+              "stringValue": "Pod"
+            }
+          },
+          {
+            "key": "k8s.object.name",
+            "value": {
+              "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6"
+            }
+          },
+          {
+            "key": "k8s.object.uid",
+            "value": {
+              "stringValue": "23fb5c1a-ddec-4fbd-a8c5-5b3fcee29069"
+            }
+          },
+          {
+            "key": "k8s.object.fieldpath",
+            "value": {
+              "stringValue": ""
+            }
+          },
+          {
+            "key": "otel.collector.name",
+            "value": {
+              "stringValue": "grandview-dev"
+            }
+          },
+          {
+            "key": "host.name",
+            "value": {
+              "stringValue": "otelcol-k8s-collector-84d9c8f9dd-dlbzt"
+            }
+          },
+          {
+            "key": "os.type",
+            "value": {
+              "stringValue": "linux"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "azure"
+            }
+          },
+          {
+            "key": "cloud.platform",
+            "value": {
+              "stringValue": "azure_vm"
+            }
+          },
+          {
+            "key": "cloud.region",
+            "value": {
+              "stringValue": "KoreaCentral"
+            }
+          },
+          {
+            "key": "host.id",
+            "value": {
+              "stringValue": "af54196e-8539-45ef-979d-b8839304999c"
+            }
+          },
+          {
+            "key": "cloud.account.id",
+            "value": {
+              "stringValue": "49ec1bcb-2797-4ba8-8339-a30b8f862992"
+            }
+          },
+          {
+            "key": "azure.vm.size",
+            "value": {
+              "stringValue": "Standard_D8s_v4"
+            }
+          },
+          {
+            "key": "azure.vm.scaleset.name",
+            "value": {
+              "stringValue": "aks-defaultpool-10465047-vmss"
+            }
+          },
+          {
+            "key": "azure.resourcegroup.name",
+            "value": {
+              "stringValue": "MC_GrandView-SKT_grandview-dev_koreacentral"
+            }
+          }
+        ]
+      },
+      "instrumentationLibraryLogs": [
+        {
+          "instrumentationLibrary": {},
+          "logRecords": [
+            {
+              "timeUnixNano": "1646633903000000000",
+              "severityNumber": "SEVERITY_NUMBER_WARN",
+              "severityText": "Warning",
+              "body": {
+                "stringValue": "MountVolume.SetUp failed for volume \"kube-api-access-crf6k\" : object \"starboard-system\"/\"kube-root-ca.crt\" not registered"
+              },
+              "attributes": [
+                {
+                  "key": "k8s.event.reason",
+                  "value": {
+                    "stringValue": "FailedMount"
+                  }
+                },
+                {
+                  "key": "k8s.event.action",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "k8s.event.start_time",
+                  "value": {
+                    "stringValue": "2022-03-07 06:18:22 +0000 UTC"
+                  }
+                },
+                {
+                  "key": "k8s.event.name",
+                  "value": {
+                    "stringValue": "scan-configauditreport-77c54c4f84--1-pl4d6.16da04cf76f7d013"
+                  }
+                },
+                {
+                  "key": "k8s.event.uid",
+                  "value": {
+                    "stringValue": "da72d8da-ae43-4df2-9017-ef93288a3c06"
+                  }
+                },
+                {
+                  "key": "k8s.namespace.name",
+                  "value": {
+                    "stringValue": "starboard-system"
+                  }
+                },
+                {
+                  "key": "k8s.event.count",
+                  "value": {
+                    "intValue": "2"
+                  }
+                }
+              ],
+              "traceId": "",
+              "spanId": ""
+            }
+          ]
+        }
+      ],
+      "schemaUrl": "https://opentelemetry.io/schemas/v1.6.1"
+    }
+  ]
+}

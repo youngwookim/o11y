@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: otelcol-dso-otlphttp-external
+  namespace: observability
+spec:
+  rules:
+    - host: otelcol.dev.metatron.app
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/"
+            backend:
+              service:
+                name: otelcol-dso-collector
+                port:
+                  number: 4318
+  # This section is only required if TLS is to be enabled for the Ingress
+  tls:
+    - hosts:
+        - otelcol.dev.metatron.app
+      secretName: grandview-dev-tls

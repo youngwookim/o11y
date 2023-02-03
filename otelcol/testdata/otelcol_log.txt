@@ -1,0 +1,33 @@
+Resource labels:
+     -> k8s.pod.uid: STRING(232df933-8444-4707-9d4d-2fdd53986106)
+     -> k8s.pod.start_time: STRING(2022-04-25 16:13:37 +0000 UTC)
+     -> k8s.pod.labels.app.kubernetes.io/instance: STRING(observability.otelcol-dso)
+     -> k8s.pod.labels.pod-template-hash: STRING(8cbc4bfd6)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIPs: STRING(10.244.1.53/32)
+     -> k8s.pod.labels.app.kubernetes.io/managed-by: STRING(opentelemetry-operator)
+     -> k8s.pod.labels.app.kubernetes.io/name: STRING(otelcol-dso-collector)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIP: STRING(10.244.1.53/32)
+     -> k8s.pod.name: STRING(otelcol-dso-collector-8cbc4bfd6-nrpj8)
+     -> k8s.node.name: STRING(aks-defaultpool-10465047-vmss000002)
+     -> k8s.pod.annotations.cni.projectcalico.org/containerID: STRING(c5b8a92f7dc96e98dfeb6426a7e8863c970357a94e3c02d03c096e246f5807e9)
+     -> k8s.namespace.name: STRING(observability)
+     -> k8s.deployment.name: STRING(otelcol-dso-collector)
+     -> k8s.pod.labels.app.kubernetes.io/part-of: STRING(opentelemetry)
+     -> k8s.pod.labels.app.kubernetes.io/component: STRING(opentelemetry-collector)
+     -> k8s.pod.annotations.opentelemetry-operator-config/sha256: STRING(a55383c0189741a121b2e137a8d47a02dcbb79740bb9bbaa995018fb3bf893af)
+     -> k8s.cluster.name: STRING(grandview-dev)
+ScopeLogs #0
+ScopeLogs SchemaURL: 
+InstrumentationScope  
+LogRecord #0
+Timestamp: 2022-04-25 16:23:27.667408506 +0000 UTC
+Severity: 
+ShortName: 
+Body:      -> service: STRING(prometheus-prometheus-node-exporter)
+Attributes:
+     -> k8s.container.name: STRING(otc-container)
+     -> k8s.container.restart_count: STRING(0)
+     -> k8s.namespace.name: STRING(observability)
+     -> k8s.pod.name: STRING(otelcol-dso-collector-8cbc4bfd6-nrpj8)
+     -> k8s.pod.uid: STRING(232df933-8444-4707-9d4d-2fdd53986106)
+     -> stream: STRING(stderr)

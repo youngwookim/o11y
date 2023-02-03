@@ -1,0 +1,185 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol-dso-ingester
+  namespace: observability
+spec:
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
+  imagePullPolicy: IfNotPresent
+  replicas: 2
+  ports:
+    - port: 55679
+      name: zpages
+    - port: 4318
+      name: otlp-http
+    - port: 4317
+      name: otlp-grpc
+    - port: 8888
+      name: metrics
+  resources:
+    limits:
+      cpu: 1
+      memory: 6Gi
+    requests:
+      cpu: 1
+      memory: 3Gi
+  env:
+    - name: K8S_NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+    - name: K8S_POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: K8S_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+    - name: K8S_POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          http:
+            endpoint: "0.0.0.0:4318"
+          grpc:
+            endpoint: "0.0.0.0:4317"
+            max_recv_msg_size_mib: 99999999
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: 'otel-collector-dso-ingester'
+              scrape_interval: 60s
+              static_configs:
+                - targets: ['0.0.0.0:8888']
+            
+      kafka/traces:
+        protocol_version: 3.1.0
+        topic: "otel-traces-default"
+        brokers:
+          - "dso-kafka-bootstrap.kafka:9092"
+        group_id: otel-collector-traces
+      kafka/metrics:
+        protocol_version: 3.1.0
+        topic: "otel-metrics-default"
+        brokers:
+          - "dso-kafka-bootstrap.kafka:9092"
+        group_id: otel-collector-metrics
+      kafka/logs:
+        protocol_version: 3.1.0
+        topic: "otel-logs-default"
+        brokers:
+          - "dso-kafka-bootstrap.kafka:9092"
+        group_id: otel-collector-logs
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 80
+        spike_limit_percentage: 30
+      batch:
+        timeout: 1s
+        send_batch_size: 1024
+        send_batch_max_size: 1024
+
+    exporters:
+      logging:
+        #loglevel: debug
+      loki:
+        #endpoint: "http://loki-write.observability:3100/loki/api/v1/push"
+        # cloki
+        endpoint: "http://cloki.observability:3100/loki/api/v1/push"
+        format: json
+        labels:
+          resource:
+            k8s.cluster.name: "k8s_cluster"
+            k8s.namespace.name: "namespace"
+            k8s.deployment.name: "deployment"
+            k8s.pod.name: "pod"
+            k8s.node.name: "node"
+            k8s.pod.labels.app: "app"
+            k8s.pod.labels.druid_cr: "druid_cr"
+            k8s.pod.labels.component: "component"
+            k8s.pod.labels.app.kubernetes.io/component: "app_kubernetes_io_component"
+            k8s.pod.labels.app.kubernetes.io/name: "app_kubernetes_io_name"
+            k8s.pod.labels.app.kubernetes.io/instance: "app_kubernetes_io_name_instance"
+          attributes:
+            k8s.namespace.name: "k8s_namespace_name"
+            k8s.container.name: "k8s_container_name"
+            k8s.pod.name: "k8s_pod_name"
+          record:
+            traceID: "traceid"
+            spanID: "spanid"
+      prometheusremotewrite/thanos:
+        # thanos
+        endpoint: "http://thanos-receive.observability:19291/api/v1/receive"
+        resource_to_telemetry_conversion:
+          enabled: true
+        external_labels:
+          ingester_pod_name: "$K8S_POD_NAME"
+      #prometheusremotewrite/promscale:
+      #  endpoint: "http://tobs-promscale-connector:9201/write"
+      #  tls:
+      #    insecure: true
+      # SigNoz
+      otlp/signoz:
+        endpoint: "signoz-otel-collector.observability:4317"
+        tls:
+          insecure: true
+      #otlp/signozmetrics:
+      #  endpoint: "signoz-otel-collector-metrics.observability:4317"
+      #  tls:
+      #    insecure: true
+      jaeger:
+        endpoint: jaeger-collector.observability:14250
+        tls:
+          insecure: true
+      #otlp/promscale:
+      #    endpoint: "tobs-promscale-connector:9202"
+      #    tls:
+      #      insecure: true
+
+    extensions:
+      health_check:
+      pprof:
+      zpages:
+        endpoint: 0.0.0.0:55679
+      memory_ballast:
+        size_in_percentage: 20
+        
+    service:
+      telemetry:
+        logs:
+          level: "info"
+      extensions: [health_check, pprof, zpages, memory_ballast]
+      pipelines:
+        #traces/promscale:
+        #  receivers: [kafka/traces]
+        #  processors: [memory_limiter, batch]
+        #  exporters: [logging, otlp/promscale]
+        traces/jaeger:
+          receivers: [kafka/traces]
+          processors: [memory_limiter, batch]
+          exporters: [logging, jaeger]
+        traces/signoz:
+          receivers: [kafka/traces]
+          processors: [memory_limiter, batch]
+          exporters: [logging, otlp/signoz]
+        #metrics/promscale:
+        #  receivers: [kafka/metrics, prometheus]
+        #  processors: [memory_limiter, batch]
+        #  exporters: [logging, prometheusremotewrite/promscale]
+        metrics/thanos:
+          receivers: [kafka/metrics, prometheus]
+          processors: [memory_limiter, batch]
+          exporters: [logging, prometheusremotewrite/thanos]
+        logs:
+          receivers: [kafka/logs]
+          processors: [memory_limiter, batch]
+          exporters: [logging, loki]
+
+

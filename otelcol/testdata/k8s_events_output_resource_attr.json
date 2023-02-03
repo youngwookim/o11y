@@ -1,0 +1,107 @@
+{
+    "resourceLogs": [
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000000"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "fluent-bit-bnvmt"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "b1c8047c-e695-4220-bd47-4131df02888b"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{fluent-bit}"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1645685166000000000",
+                "severityNumber": "SEVERITY_NUMBER_WARN",
+                "severityText": "Warning",
+                "body": {
+                  "stringValue": "Readiness probe failed: HTTP probe failed with statuscode: 500"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Unhealthy"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-24 04:41:06 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "fluent-bit-bnvmt.16d62bbfb1b0c3cd"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "6a17bf40-29e2-4d17-98f5-02b662447d4c"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "monitoring"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "8209"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,25 @@
+Trace ID: 
+Span ID: 
+Flags: 0
+LogRecord #10
+Timestamp: 2022-02-19 07:01:36.667272126 +0000 UTC
+Severity: 
+ShortName: 
+Body: I0219 07:01:36.667192       1 checkpoint_writer.go:114] Saved VPA knative-serving/goldilocks-controller checkpoint for controller
+Attributes:
+     -> time: STRING(2022-02-19T07:01:36.667272126Z)
+     -> stream: STRING(stderr)
+     -> _p: STRING(F)
+     -> kubernetes: MAP({
+     -> annotations: MAP({"cni.projectcalico.org/containerID":"1f2a2316696565b7a7d49f990f6129afd5ed9e8da158475a6c66c743202c475e","cni.projectcalico.org/podIP":"10.244.2.70/32","cni.projectcalico.org/podIPs":"10.244.2.70/32"})
+     -> container_hash: STRING(k8s.gcr.io/autoscaling/vpa-recommender@sha256:54d3ca854d6718e321ff99807263bb1a38ad93fd089594c605e52913dc2e445c)
+     -> container_image: STRING(k8s.gcr.io/autoscaling/vpa-recommender:0.9.2)
+     -> container_name: STRING(vpa)
+     -> docker_id: STRING(ef3d7a154220ff538155e0fcf284a4a932566b97ecfc3b7844a3c7e844355689)
+     -> host: STRING(aks-defaultpool-10465047-vmss000001)
+     -> labels: MAP({"app.kubernetes.io/component":"recommender","app.kubernetes.io/instance":"vpa","app.kubernetes.io/name":"vpa","pod-template-hash":"697475cb78"})
+     -> namespace_name: STRING(vpa)
+     -> pod_id: STRING(422cda9f-54b4-4505-a08b-a81588fc2047)
+     -> pod_name: STRING(vpa-recommender-697475cb78-49s4q)
+})
+     -> fluent.tag: STRING(kube.var.log.containers.vpa-recommender-697475cb78-49s4q_vpa_vpa-ef3d7a154220ff538155e0fcf284a4a932566b97ecfc3b7844a3c7e844355689.log)

@@ -1,0 +1,549 @@
+{
+    "resourceLogs": [
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000001"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "otelcol-dso-collector-68855b4569-2gn4d"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "aadd6b6f-a757-4997-9f85-6ebdd11e5923"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            },
+            {
+              "key": "otel.collector.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1646044547000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Pulling image \"metatron.azurecr.io/otel/opentelemetry-collector-contrib:0.45.0-amd64\""
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Pulling"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-28 10:34:54 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "otelcol-dso-collector-68855b4569-2gn4d.16d7ecbf1257e644"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "e03520a6-c90c-4422-8b4c-cf41c7d0b963"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "observability"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "4"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000001"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "otelcol-dso-collector-68855b4569-2gn4d"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "aadd6b6f-a757-4997-9f85-6ebdd11e5923"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            },
+            {
+              "key": "otel.collector.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1646044547000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Successfully pulled image \"metatron.azurecr.io/otel/opentelemetry-collector-contrib:0.45.0-amd64\" in 90.143524ms"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Pulled"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-28 10:35:47 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "otelcol-dso-collector-68855b4569-2gn4d.16d7eccb801c88bf"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "52696fcc-8694-4d27-ac6a-bcc3999405e5"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "observability"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "1"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000001"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "otelcol-dso-collector-68855b4569-2gn4d"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "aadd6b6f-a757-4997-9f85-6ebdd11e5923"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            },
+            {
+              "key": "otel.collector.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1646044547000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Created container otc-container"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Created"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-28 10:34:54 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "otelcol-dso-collector-68855b4569-2gn4d.16d7ecbf2f6991ee"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "0ff3ba29-642f-4d8b-929e-cc25e23c8b3d"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "observability"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "4"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000001"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "otelcol-dso-collector-68855b4569-2gn4d"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "aadd6b6f-a757-4997-9f85-6ebdd11e5923"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            },
+            {
+              "key": "otel.collector.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1646044547000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Started container otc-container"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Started"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-28 10:34:54 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "otelcol-dso-collector-68855b4569-2gn4d.16d7ecbf352f55f4"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "9967909a-7980-4903-97b3-2f6fcb48987b"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "observability"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "4"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000001"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "otelcol-dso-collector-68855b4569-2gn4d"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "aadd6b6f-a757-4997-9f85-6ebdd11e5923"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            },
+            {
+              "key": "otel.collector.name",
+              "value": {
+                "stringValue": "grandview-dev"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1646044548000000000",
+                "severityNumber": "SEVERITY_NUMBER_WARN",
+                "severityText": "Warning",
+                "body": {
+                  "stringValue": "Back-off restarting failed container"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "BackOff"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-28 10:34:56 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "otelcol-dso-collector-68855b4569-2gn4d.16d7ecbf9cf8117c"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "52507c25-4a28-4119-b945-07210c51fdb0"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "observability"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "7"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

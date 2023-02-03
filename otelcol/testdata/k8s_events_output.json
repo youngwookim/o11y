@@ -1,0 +1,210 @@
+{
+    "resourceLogs": [
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": ""
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000000"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "scan-vulnerabilityreport-766db59bc8--1-4tzzp"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "0e016b16-0612-4533-aaea-d098e2cf621b"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1645684628000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Created container otc-container"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Created"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-24 06:37:08 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "scan-vulnerabilityreport-766db59bc8--1-4tzzp.16d6a5734d0f5919"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "9531adb3-4f8a-4e52-90a4-98c538df3955"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "starboard-system"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "1"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "k8s.cluster.name",
+              "value": {
+                "stringValue": ""
+              }
+            },
+            {
+              "key": "k8s.node.name",
+              "value": {
+                "stringValue": "aks-defaultpool-10465047-vmss000000"
+              }
+            },
+            {
+              "key": "k8s.object.kind",
+              "value": {
+                "stringValue": "Pod"
+              }
+            },
+            {
+              "key": "k8s.object.name",
+              "value": {
+                "stringValue": "scan-vulnerabilityreport-766db59bc8--1-4tzzp"
+              }
+            },
+            {
+              "key": "k8s.object.uid",
+              "value": {
+                "stringValue": "0e016b16-0612-4533-aaea-d098e2cf621b"
+              }
+            },
+            {
+              "key": "k8s.object.fieldpath",
+              "value": {
+                "stringValue": "spec.containers{otc-container}"
+              }
+            }
+          ]
+        },
+        "instrumentationLibraryLogs": [
+          {
+            "instrumentationLibrary": {},
+            "logRecords": [
+              {
+                "timeUnixNano": "1645684628000000000",
+                "severityNumber": "SEVERITY_NUMBER_INFO",
+                "severityText": "Normal",
+                "body": {
+                  "stringValue": "Started container otc-container"
+                },
+                "attributes": [
+                  {
+                    "key": "k8s.event.reason",
+                    "value": {
+                      "stringValue": "Started"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.action",
+                    "value": {
+                      "stringValue": ""
+                    }
+                  },
+                  {
+                    "key": "k8s.event.start_time",
+                    "value": {
+                      "stringValue": "2022-02-24 06:37:08 +0000 UTC"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.name",
+                    "value": {
+                      "stringValue": "scan-vulnerabilityreport-766db59bc8--1-4tzzp.16d6a5735333ec70"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.uid",
+                    "value": {
+                      "stringValue": "ebd39675-f50d-4cde-807f-386247520a2f"
+                    }
+                  },
+                  {
+                    "key": "k8s.namespace.name",
+                    "value": {
+                      "stringValue": "starboard-system"
+                    }
+                  },
+                  {
+                    "key": "k8s.event.count",
+                    "value": {
+                      "intValue": "1"
+                    }
+                  }
+                ],
+                "traceId": "",
+                "spanId": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,14 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol-containerlog
+spec:
+  env:
+  - name: K8S_CLUSTER_NAME
+    value: "metatron-grandview-DevStgDemo"
+  - name: K8S_CLUSTER_ENV
+    value: "devstgdemo"
+  - name: K8S_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName

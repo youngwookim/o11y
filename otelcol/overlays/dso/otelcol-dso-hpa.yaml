@@ -1,0 +1,21 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: otelcol-dso-intake
+  #labels:
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: otelcol-dso-intake-collector
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 70

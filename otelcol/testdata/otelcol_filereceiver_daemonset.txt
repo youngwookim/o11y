@@ -1,0 +1,15 @@
+Trace ID: 
+Span ID: 
+Flags: 0
+LogRecord #62
+Timestamp: 2022-02-22 18:03:48.736907748 +0000 UTC
+Severity: 
+ShortName: 
+Body: 	at io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:351) ~[druid-server-2021.3-SNAPSHOT.jar:2021.3-SNAPSHOT]
+Attributes:
+     -> k8s.namespace.name: STRING(grandview-dev)
+     -> k8s.pod.name: STRING(druid-grandview-historicals-0)
+     -> k8s.pod.uid: STRING(e6e194f8-4de0-488d-862e-047c8200fb2b)
+     -> run_id: STRING(0)
+     -> stream: STRING(stdout)
+     -> k8s.container.name: STRING(druid-grandview-historicals)

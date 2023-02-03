@@ -1,0 +1,17 @@
+Resource SchemaURL: https://opentelemetry.io/schemas/v1.5.0
+Resource labels:
+     -> k8s.cluster.name: STRING()
+     -> k8s.node.name: STRING()
+     -> k8s.object.kind: STRING(HorizontalPodAutoscaler)
+     -> k8s.object.name: STRING(jaeger-dso-collector)
+     -> k8s.object.uid: STRING(8fbf5c05-7bea-448d-bba9-ec1aaa912532)
+     -> k8s.object.fieldpath: STRING()
+     -> cloud.provider: STRING(azure)
+     -> cloud.platform: STRING(azure_vm)
+     -> host.name: STRING(aks-defaultpool-10465047-vmss_2)
+     -> cloud.region: STRING(KoreaCentral)
+     -> host.id: STRING(af54196e-8539-45ef-979d-b8839304999c)
+     -> cloud.account.id: STRING(49ec1bcb-2797-4ba8-8339-a30b8f862992)
+     -> azure.vm.size: STRING(Standard_D8s_v4)
+     -> azure.vm.scaleset.name: STRING(aks-defaultpool-10465047-vmss)
+     -> azure.resourcegroup.name: STRING(mc_grandview-skt_grandview-dev_koreacentral)

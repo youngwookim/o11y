@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    cloki.cmd: cloki.org
+  labels:
+    io.kompose.service: cloki
+  name: cloki
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: cloki
+  template:
+    metadata:
+      annotations:
+        cloki.cmd: cloki.org
+      labels:
+        io.kompose.service: cloki
+    spec:
+      containers:
+        - env:
+            - name: CLICKHOUSE_AUTH
+              value: "clickhouse_operator:clickhouse_operator_password"
+            - name: CLICKHOUSE_DB
+              value: "default"
+            - name: CLICKHOUSE_PORT
+              value: "8123"
+            - name: CLICKHOUSE_SERVER
+              value: "chendpoint-cloki.observability"
+            - name: DEBUG
+              value: "false"
+            - name: LOG_LEVEL
+              value: "error"
+          image: qxip/cloki:v2.0.27
+          name: cloki
+          ports:
+            - containerPort: 3100
+          resources:
+            limits:
+              cpu: 2
+              memory: 2Gi
+            requests:
+              cpu: 1
+              memory: 1Gi
+      restartPolicy: Always

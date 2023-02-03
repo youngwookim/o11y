@@ -1,0 +1,61 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 100,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "gridPos": {
+          "h": 22,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "content": "<iframe style=\"position:absolute;height:100%;width:100%;border:none\" src=\"https://akhq.dev.metatron.app/\" />",
+          "mode": "html"
+        },
+        "pluginVersion": "8.3.4",
+        "title": "AKHQ (grandview-dev)",
+        "type": "text"
+      }
+    ],
+    "schemaVersion": 34,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "AKHQ (grandview-dev)",
+    "uid": "Gqvv1vLnk",
+    "version": 1,
+    "weekStart": ""
+  }

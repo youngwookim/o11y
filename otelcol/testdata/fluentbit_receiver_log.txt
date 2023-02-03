@@ -1,0 +1,78 @@
+Trace ID: 
+Span ID: 
+Flags: 0
+LogRecord #4
+Timestamp: 2022-02-24 12:15:45.726194747 +0000 UTC
+Severity: 
+ShortName: 
+Body: I0224 12:15:45.726018       1 request.go:557] Throttling request took 187.763015ms, request: PATCH:https://10.0.0.1:443/apis/autoscaling.k8s.io/v1/namespaces/grandview-dev/verticalpodautoscalers/goldilocks-grandview
+Attributes:
+     -> time: STRING(2022-02-24T12:15:45.726194747Z)
+     -> stream: STRING(stderr)
+     -> _p: STRING(F)
+     -> k8s: MAP({
+     -> annotations: MAP({"cni.projectcalico.org/containerID":"1f2a2316696565b7a7d49f990f6129afd5ed9e8da158475a6c66c743202c475e","cni.projectcalico.org/podIP":"10.244.2.70/32","cni.projectcalico.org/podIPs":"10.244.2.70/32"})
+     -> container_hash: STRING(k8s.gcr.io/autoscaling/vpa-recommender@sha256:54d3ca854d6718e321ff99807263bb1a38ad93fd089594c605e52913dc2e445c)
+     -> container_image: STRING(k8s.gcr.io/autoscaling/vpa-recommender:0.9.2)
+     -> container_name: STRING(vpa)
+     -> docker_id: STRING(ef3d7a154220ff538155e0fcf284a4a932566b97ecfc3b7844a3c7e844355689)
+     -> host: STRING(aks-defaultpool-10465047-vmss000001)
+     -> labels: MAP({"app.kubernetes.io/component":"recommender","app.kubernetes.io/instance":"vpa","app.kubernetes.io/name":"vpa","pod-template-hash":"697475cb78"})
+     -> namespace_name: STRING(vpa)
+     -> pod_id: STRING(422cda9f-54b4-4505-a08b-a81588fc2047)
+     -> pod_name: STRING(vpa-recommender-697475cb78-49s4q)
+})
+     -> pod_name: STRING(vpa-recommender-697475cb78-49s4q)
+     -> namespace_name: STRING(vpa)
+     -> pod_id: STRING(422cda9f-54b4-4505-a08b-a81588fc2047)
+     -> annotations: MAP({
+     -> cni.projectcalico.org/containerID: STRING(1f2a2316696565b7a7d49f990f6129afd5ed9e8da158475a6c66c743202c475e)
+     -> cni.projectcalico.org/podIP: STRING(10.244.2.70/32)
+     -> cni.projectcalico.org/podIPs: STRING(10.244.2.70/32)
+})
+     -> host: STRING(aks-defaultpool-10465047-vmss000001)
+     -> container_name: STRING(vpa)
+     -> docker_id: STRING(ef3d7a154220ff538155e0fcf284a4a932566b97ecfc3b7844a3c7e844355689)
+     -> container_hash: STRING(k8s.gcr.io/autoscaling/vpa-recommender@sha256:54d3ca854d6718e321ff99807263bb1a38ad93fd089594c605e52913dc2e445c)
+     -> container_image: STRING(k8s.gcr.io/autoscaling/vpa-recommender:0.9.2)
+     -> app.kubernetes.io/component: STRING(recommender)
+     -> app.kubernetes.io/instance: STRING(vpa)
+     -> app.kubernetes.io/name: STRING(vpa)
+     -> pod-template-hash: STRING(697475cb78)
+     -> fluent.tag: STRING(kube.var.log.containers.vpa-recommender-697475cb78-49s4q_vpa_vpa-ef3d7a154220ff538155e0fcf284a4a932566b97ecfc3b7844a3c7e844355689.log)
+
+-- remove kubernetes, labels
+Trace ID: 
+Span ID: 
+Flags: 0
+LogRecord #1
+Timestamp: 2022-02-24 12:23:29.32249827 +0000 UTC
+Severity: 
+ShortName: 
+Body:      -> _p: STRING(F)
+Attributes:
+     -> time: STRING(2022-02-24T12:23:29.32249827Z)
+     -> stream: STRING(stderr)
+     -> _p: STRING(F)
+     -> pod_name: STRING(otelcol-k8s-collector-7596847455-vk2zp)
+     -> namespace_name: STRING(observability)
+     -> pod_id: STRING(40c85331-ac81-4d1c-ba6c-4a9c13221698)
+     -> annotations: MAP({
+     -> cni.projectcalico.org/containerID: STRING(8c7a52778b1c83af659bfeb55bd7b59d5b7c07efed28c6832b69c185bc519f88)
+     -> cni.projectcalico.org/podIP: STRING(10.244.1.218/32)
+     -> cni.projectcalico.org/podIPs: STRING(10.244.1.218/32)
+     -> opentelemetry-operator-config/sha256: STRING(e9c6abf14be9c6e57e4723f4b1cb6c5b55f2fe797d5f839333ffd090fa4db397)
+})
+     -> host: STRING(aks-defaultpool-10465047-vmss000002)
+     -> container_name: STRING(otc-container)
+     -> docker_id: STRING(94f7e6269f7c8ffee5d0c68c56be44d90f6fd9efc9e92691816a35d1beccac69)
+     -> container_hash: STRING(metatron.azurecr.io/otel/opentelemetry-collector-contrib@sha256:df91b97fa5f018783acf9187a5ef1c162078e2eb8e98029d335b10e5e2428595)
+     -> container_image: STRING(metatron.azurecr.io/otel/opentelemetry-collector-contrib:0.45.0-amd64)
+     -> app.kubernetes.io/component: STRING(opentelemetry-collector)
+     -> app.kubernetes.io/instance: STRING(observability.otelcol-k8s)
+     -> app.kubernetes.io/managed-by: STRING(opentelemetry-operator)
+     -> app.kubernetes.io/name: STRING(otelcol-k8s-collector)
+     -> app.kubernetes.io/part-of: STRING(opentelemetry)
+     -> pod-template-hash: STRING(7596847455)
+     -> fluent.tag: STRING(kube.var.log.containers.otelcol-k8s-collector-7596847455-vk2zp_observability_otc-container-94f7e6269f7c8ffee5d0c68c56be44d90f6fd9efc9e92691816a35d1beccac69.log)
+Trace ID: 

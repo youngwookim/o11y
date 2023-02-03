@@ -1,0 +1,134 @@
+apiVersion: v1
+kind: "ConfigMap"
+metadata:
+  name: "bootstrap-mounted-configmap"
+data:
+  01_create_databases.sh: |
+    #!/bin/bash
+    set -e
+    clickhouse client -n <<-EOSQL
+      CREATE DATABASE IF NOT EXISTS signoz;
+      CREATE DATABASE IF NOT EXISTS signoz_metrics;
+    EOSQL
+  02_create_table.sh: |
+    #!/bin/bash
+    set -e
+    clickhouse client -n <<-EOSQL
+      CREATE TABLE IF NOT EXISTS signoz.signoz_index (
+          timestamp DateTime64(9) CODEC(Delta, ZSTD(1)),
+          traceID String CODEC(ZSTD(1)),
+          spanID String CODEC(ZSTD(1)),
+          parentSpanID String CODEC(ZSTD(1)),
+          serviceName LowCardinality(String) CODEC(ZSTD(1)),
+          name LowCardinality(String) CODEC(ZSTD(1)),
+          kind Int32 CODEC(ZSTD(1)),
+          durationNano UInt64 CODEC(ZSTD(1)),
+          tags Array(String) CODEC(ZSTD(1)),
+          tagsKeys Array(String) CODEC(ZSTD(1)),
+          tagsValues Array(String) CODEC(ZSTD(1)),
+          statusCode Int64 CODEC(ZSTD(1)),
+          references String CODEC(ZSTD(1)),
+          externalHttpMethod Nullable(String) CODEC(ZSTD(1)),
+          externalHttpUrl Nullable(String) CODEC(ZSTD(1)),
+          component Nullable(String) CODEC(ZSTD(1)),
+          dbSystem Nullable(String) CODEC(ZSTD(1)),
+          dbName Nullable(String) CODEC(ZSTD(1)),
+          dbOperation Nullable(String) CODEC(ZSTD(1)),
+          peerService Nullable(String) CODEC(ZSTD(1)),
+          INDEX idx_tagsKeys tagsKeys TYPE bloom_filter(0.01) GRANULARITY 64,
+          INDEX idx_tagsValues tagsValues TYPE bloom_filter(0.01) GRANULARITY 64,
+          INDEX idx_duration durationNano TYPE minmax GRANULARITY 1
+          ) ENGINE MergeTree()
+          PARTITION BY toDate(timestamp)
+          ORDER BY (serviceName, -toUnixTimestamp(timestamp))
+    EOSQL
+---
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: "signoz"
+spec:
+  configuration:
+    clusters:
+      - name: "signoz"
+        layout:
+          shardsCount: 1
+          replicasCount: 1
+    settings:
+      compression/case/method: zstd
+      disable_internal_dns_cache: 1
+  defaults:
+    templates:
+      podTemplate: pod-template
+      dataVolumeClaimTemplate: data-volume-template
+      logVolumeClaimTemplate: log-volume-template
+      serviceTemplate: svc-template
+
+  templates:
+    podTemplates:
+      - name: pod-template
+        spec:
+          containers:
+            - name: clickhouse
+              image: clickhouse/clickhouse-server:22.2
+              ports:
+                - name: http
+                  containerPort: 8123
+                - name: tcp
+                  containerPort: 9000
+                - name: interserver
+                  containerPort: 9010
+              #volumeMounts:
+              #  - name: bootstrap-configmap-volume
+              #    mountPath: /docker-entrypoint-initdb.d
+              resources:
+                requests:
+                  memory: 2Gi
+                  cpu: 1
+                limits:
+                  memory: 4Gi
+                  cpu: 1
+          #volumes:
+          #  - name: bootstrap-configmap-volume
+          #    configMap:
+          #      name: bootstrap-mounted-configmap
+          
+
+    volumeClaimTemplates:
+      - name: data-volume-template
+        spec:
+          storageClassName: "managed-csi-premium"
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 100Gi
+      - name: log-volume-template
+        spec:
+          storageClassName: "managed-csi-premium"
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+
+    serviceTemplates:
+      - name: svc-template
+        generateName: chendpoint-{chi}
+        metadata:
+          #labels:
+          #  custom.label: "custom.value"
+          annotations:
+            #cloud.google.com/load-balancer-type: "Internal"
+            #service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+            #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+            #service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
+            #service.beta.kubernetes.io/cce-load-balancer-internal-vpc: "true"
+        spec:
+          ports:
+            - name: http
+              port: 8123
+            - name: tcp
+              port: 9000
+          #type: LoadBalancer
+          type: ClusterIP

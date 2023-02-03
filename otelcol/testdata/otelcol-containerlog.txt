@@ -1,0 +1,43 @@
+Resource labels:
+     -> k8s.pod.uid: STRING(87e328a9-2996-4a98-875a-a43017100f6e)
+     -> k8s.node.name: STRING(aks-defaultpool-10465047-vmss000001)
+     -> k8s.pod.labels.strimzi.io/name: STRING(grandview-dev-zookeeper)
+     -> k8s.pod.labels.controller-revision-hash: STRING(grandview-dev-zookeeper-69d5bfd6f4)
+     -> k8s.pod.labels.strimzi.io/kind: STRING(Kafka)
+     -> k8s.pod.labels.app.kubernetes.io/managed-by: STRING(strimzi-cluster-operator)
+     -> k8s.pod.annotations.strimzi.io/generation: STRING(2)
+     -> k8s.pod.annotations.cni.projectcalico.org/containerID: STRING(68f4797624a46f5b97bc560ae362490505abbe7478f104cacd1934703632072f)
+     -> k8s.pod.name: STRING(grandview-dev-zookeeper-2)
+     -> k8s.pod.start_time: STRING(2022-04-29 05:57:36 +0000 UTC)
+     -> k8s.deployment.name: STRING(grandview-dev)
+     -> k8s.pod.labels.app.kubernetes.io/part-of: STRING(strimzi-grandview-dev)
+     -> k8s.pod.labels.strimzi.io/cluster: STRING(grandview-dev)
+     -> k8s.pod.labels.statefulset.kubernetes.io/pod-name: STRING(grandview-dev-zookeeper-2)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIP: STRING(10.244.15.10/32)
+     -> k8s.pod.annotations.strimzi.io/cluster-ca-cert-generation: STRING(0)
+     -> k8s.pod.annotations.strimzi.io/logging-hash: STRING(0f057cb0003c78f02978b83e4fabad5bd508680c)
+     -> k8s.pod.annotations.cni.projectcalico.org/podIPs: STRING(10.244.15.10/32)
+     -> k8s.namespace.name: STRING(kafka)
+     -> k8s.pod.labels.app.kubernetes.io/instance: STRING(grandview-dev)
+     -> k8s.pod.labels.app.kubernetes.io/name: STRING(zookeeper)
+     -> k8s.cluster.name: STRING(grandview)
+
+ScopeLogs #0
+ScopeLogs SchemaURL: 
+InstrumentationScope  
+LogRecord #0
+ObservedTimestamp: 2022-05-01 04:23:42.175315935 +0000 UTC
+Timestamp: 2022-05-01 04:23:41.993276171 +0000 UTC
+Severity: 
+Body: 2022-05-01T04:23:41.993276171Z stdout F {"@timestamp":"2022-05-01T04:23:41.992Z","@version":"1","message":"In flight records exceeds max.poll.records waiting for response from subscriber before polling for new records max.poll.records=500 records=610 topics=[knative-broker-devsecops-dso]","logger_name":"dev.knative.eventing.kafka.broker.dispatcher.impl.consumer.UnorderedConsumerVerticle","thread_name":"vert.x-eventloop-thread-0","level":"INFO","level_value":20000,"max.poll.records":500,"records":610,"topics":["knative-broker-devsecops-dso"]}
+Attributes:
+     -> k8s.container.restart_count: STRING(0)
+     -> k8s.container.name: STRING(kafka-broker-dispatcher)
+     -> log.iostream: STRING(stdout)
+     -> logtag: STRING(F)
+     -> log: STRING({"@timestamp":"2022-05-01T04:23:41.992Z","@version":"1","message":"In flight records exceeds max.poll.records waiting for response from subscriber before polling for new records max.poll.records=500 records=610 topics=[knative-broker-devsecops-dso]","logger_name":"dev.knative.eventing.kafka.broker.dispatcher.impl.consumer.UnorderedConsumerVerticle","thread_name":"vert.x-eventloop-thread-0","level":"INFO","level_value":20000,"max.poll.records":500,"records":610,"topics":["knative-broker-devsecops-dso"]})
+     -> time: STRING(2022-05-01T04:23:41.993276171Z)
+     -> k8s.pod.uid: STRING(3086b705-fa1f-4b8d-b75a-32813f5731bb)
+     -> k8s.pod.name: STRING(kafka-broker-dispatcher-856bf8b4d9-qtr5k)
+     -> log.file.path: STRING(/var/log/pods/knative-eventing_kafka-broker-dispatcher-856bf8b4d9-qtr5k_3086b705-fa1f-4b8d-b75a-32813f5731bb/kafka-broker-dispatcher/0.log)
+     -> k8s.namespace.name: STRING(knative-eventing)
